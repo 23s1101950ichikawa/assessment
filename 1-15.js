@@ -1,7 +1,7 @@
 'use strict';
 const userNameInput = document.getElementById('user-Name');
 const assessmentButton = document.getElementById('assessment');
-const resultDivision = document.getElementById('result-area');
+const resultDivided = document.getElementById('result-area');
 const tweetDivision = document.getElementById('tweet-area');
 
 
@@ -14,16 +14,28 @@ assessmentButton.addEventListener(
       return;//名前がからの時は処理を終了する
     }
     //診断結果表示エリア
-    resultDivision.innerText = '';
-    const header = document.createElement('h3');
-    header.innerText = '診断結果';
-    resultDivision.appendChild(header);
+    resultDivided.innerText = '';
+    //headarDividedの作成
+
+    const headerDivided = document.createElement('div');//divダグを作る
+    headerDivided.setAttribute('class', 'card-header text-bg-primary');
+    headerDivided.innerText = '診断結果';
 
 
+    //bodyDividedの作成 
+    const bodyDivided = document.createElement('div');
+    bodyDivided.setAttribute('class', 'card-body');
     const paragraph = document.createElement('p');
+    paragraph.setAttribute('class', 'card-text');
     const result = assessment(userName);
     paragraph.innerText = result;
-    resultDivision.appendChild(paragraph);//HTMLに子要素を追加し結果を表示
+    bodyDivided.appendChild(paragraph);//HTMLに子要素を追加し結果を表示
+    //resurtDividedに cardスタイルに追加
+    resultDivided.setAttribute('class', 'card');
+    resultDivided.setAttribute('style', 'max-width:700px');
+    //headerDivided と headerDividedをheaderDividedに差し込む
+    resultDivided.appendChild(headerDivided);
+    resultDivided.appendChild(bodyDivided);
 
     tweetDivision.innerText = '';
     //ツイートエリアの作成
@@ -92,6 +104,6 @@ userNameInput.addEventListener(
     if (event.key === 'Enter') {
       assessmentButton.click();
     }
-   
+
   }
 )
