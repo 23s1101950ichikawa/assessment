@@ -30,9 +30,11 @@ assessmentButton.addEventListener(
     const result = assessment(userName);
     paragraph.innerText = result;
     bodyDivided.appendChild(paragraph);//HTMLに子要素を追加し結果を表示
+
     //resurtDividedに cardスタイルに追加
     resultDivided.setAttribute('class', 'card');
     resultDivided.setAttribute('style', 'max-width:700px');
+    
     //headerDivided と headerDividedをheaderDividedに差し込む
     resultDivided.appendChild(headerDivided);
     resultDivided.appendChild(bodyDivided);
